@@ -24,6 +24,8 @@ export const Countries = () => {
                     return (
                         <div key={country.name.official}>
                             <CountryPaper
+                                flag = {country.flags.png}
+                                alt = {country.flags.alt}
                                 countryName = {country.name.common}
                                 region = {country.region}
                                 area = {country.area}
