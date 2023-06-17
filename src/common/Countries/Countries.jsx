@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { CountryPaper } from "../CountryPaper/CountryPaper";
+import { bringCountries } from "../../services/apiCalls";
 
 import "./Countries.css";
 
 export const Countries = () => {
-    const [countries, setCountries] = useState([
-        {
-            name: "Spain",
-            region: "Europe",
-            area: 100
-        },
-        {
-            name: "Switzerland",
-            region: "Europe",
-            area: 200
-        },
-    ])
-    
+    const [countries, setCountries] = useState([]);
+
+    useEffect(() => {
+        if(countries.length === 0) {
+            bringCountries()
+                .then((response) => {
+                    setCountries(response.data);
+                })
+                .catch((error) => console.log(error));
+        }
+    }, [countries]);
+
     return (
         <div>
             {countries.length > 0 && 
                 countries.map((country) => {
                     return (
-                        <div key={country.name}>
+                        <div key={country.name.official}>
                             <CountryPaper
-                                countryName = {country.name}
+                                countryName = {country.name.common}
                                 region = {country.region}
                                 area = {country.area}
                             />
