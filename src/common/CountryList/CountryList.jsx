@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CountryPaper } from "../CountryPaper/CountryPaper";
 import { bringCountries } from "../../services/apiCalls";
-import { Flex, Button, Menu, Checkbox, Text, Anchor } from '@mantine/core';
+import { Flex, Button, Menu, Checkbox, Text, Anchor, Center, Pagination } from '@mantine/core';
 import { IconChevronDown, IconSortAscendingLetters, IconSortDescendingLetters } from '@tabler/icons-react';
 
 import "./CountryList.css";
@@ -11,6 +11,8 @@ export const CountryList = () => {
     const [sortOrder, setSortOrder] = useState("");
     const [smallerThanLithuania, setSmallerThanLithuania] = useState(false);
     const [inOceania, setInOceania] = useState(false);
+    const [activePage, setPage] = useState(1);
+    const itemsPerPage = 10;
 
     useEffect(() => {
         if (countries.length === 0) {
@@ -41,6 +43,24 @@ export const CountryList = () => {
         setSmallerThanLithuania(false);
         setInOceania(false);
     }
+
+    const filteredCountries = countries
+        .filter((country) =>
+            smallerThanLithuania
+                ? country.area < countries.find((c) => c.name.common === "Lithuania").area
+                : true
+        )
+        .filter((country) =>
+            inOceania
+                ? country.region === countries.find((c) => c.region === "Oceania").region
+                : true
+        );
+
+    const totalItems = filteredCountries.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const startIndex = (activePage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const countriesToRender = filteredCountries.slice(startIndex, endIndex);
 
     return (
         <>
@@ -89,29 +109,21 @@ export const CountryList = () => {
                 </Menu>
             </Flex>
             <div>
-                {countries.length > 0 &&
-                    countries
-                        .filter((country) =>
-                            smallerThanLithuania ? country.area < countries.find((c) => c.name.common === "Lithuania").area : true
-                        )
-                        .filter((country) =>
-                            inOceania ? country.region === countries.find((c) => c.region === "Oceania").region : true
-                        )
-                        .map((country) => {
-                            return (
-                                <div key={country.name.official}>
-                                    <CountryPaper
-                                        flag={country.flags.png}
-                                        alt={country.flags.alt}
-                                        countryName={country.name.common}
-                                        region={country.region}
-                                        area={country.area}
-                                    />
-                                </div>
-                            );
-                        })
-                }
+                {countriesToRender.map((country) => (
+                    <div key={country.name.official}>
+                        <CountryPaper
+                            flag={country.flags.png}
+                            alt={country.flags.alt}
+                            countryName={country.name.common}
+                            region={country.region}
+                            area={country.area}
+                        />
+                    </div>
+                ))}
             </div>
+            <Center maw={385} h={60} mx="auto">
+                <Pagination value={activePage} onChange={setPage} total={totalPages} />
+            </Center>
         </>
     )
 }
