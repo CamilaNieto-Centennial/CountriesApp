@@ -17,10 +17,14 @@ export const Home = () => {
                         },
                     },
                 },
+                colors: {
+                    brand: ['#F0FFF4', '#C6F6D5', '#9AE6B4', '#68D391', '#48BB78', '#38A169', '#2F855A', '#276749', '#22543D', '#1C4532'],
+                },
+                primaryColor: 'brand',
             }}
         >
             <Container fluid py="sm">
-                <Title order={1} mb="xs">Countries App</Title>
+                <Title order={1} mb={5}>Countries App</Title>
                 <CountryList />
             </Container>
         </MantineProvider>

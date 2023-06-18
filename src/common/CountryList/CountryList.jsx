@@ -87,14 +87,14 @@ export const CountryList = () => {
                         checked={inOceania}
                         onChange={(event) => setInOceania(event.currentTarget.checked)} />
                     {(smallerThanLithuania || inOceania) && (
-                        <Anchor fz="lg" span fw={700} inherit c="blue" onClick={resetFilters}>
+                        <Anchor fz="lg" span fw={700} inherit onClick={resetFilters}>
                             Reset All
                         </Anchor>
                     )}
                 </Flex>
-                <Menu trigger="hover" openDelay={100} closeDelay={400} shadow="md" width={200}>
+                <Menu trigger="hover" openDelay={100} closeDelay={400} shadow="md" width={200} position="bottom-end">
                     <Menu.Target>
-                        <Button color='teal.9' uppercase rightIcon={<IconChevronDown size="1.2rem" stroke={2} />} pr={12}>Sort By {(sortOrder === "ascending") ? " Ascending" : (sortOrder === "descending") ? " Descending" : ""}</Button>
+                        <Button uppercase rightIcon={<IconChevronDown size="1.2rem" stroke={2} />} pr={12}>Sort By {(sortOrder === "ascending") ? " Ascending" : (sortOrder === "descending") ? " Descending" : ""}</Button>
                     </Menu.Target>
 
                     <Menu.Dropdown>
