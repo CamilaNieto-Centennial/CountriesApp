@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CountryPaper } from "../CountryPaper/CountryPaper";
 import { bringCountries } from "../../services/apiCalls";
-import { Flex, Button, Menu, Checkbox, Text } from '@mantine/core';
+import { Flex, Button, Menu, Checkbox, Text, Anchor } from '@mantine/core';
 import { IconChevronDown, IconSortAscendingLetters, IconSortDescendingLetters } from '@tabler/icons-react';
 
 import "./CountryList.css";
@@ -9,6 +9,8 @@ import "./CountryList.css";
 export const CountryList = () => {
     const [countries, setCountries] = useState([]);
     const [sortOrder, setSortOrder] = useState("");
+    const [smallerThanLithuania, setSmallerThanLithuania] = useState(false);
+    const [inOceania, setInOceania] = useState(false);
 
     useEffect(() => {
         if (countries.length === 0) {
@@ -35,6 +37,11 @@ export const CountryList = () => {
         setSortOrder(order);
     };
 
+    const resetFilters = () => {
+        setSmallerThanLithuania(false);
+        setInOceania(false);
+    }
+
     return (
         <>
             <Flex
@@ -49,9 +56,21 @@ export const CountryList = () => {
             >
                 <Flex gap="md" wrap="wrap">
                     <Text fz="lg" span fw={700} inherit>Filter By: </Text>
-                    <Checkbox label="Smaller than Lithuania" size="md" />
-                    <Checkbox label="In Oceania" size="md" />
-                    <Text fz="lg" span fw={700} inherit c="blue">Reset All</Text>
+                    <Checkbox
+                        label="Smaller than Lithuania"
+                        size="md"
+                        checked={smallerThanLithuania}
+                        onChange={(event) => setSmallerThanLithuania(event.currentTarget.checked)} />
+                    <Checkbox
+                        label="In Oceania"
+                        size="md"
+                        checked={inOceania}
+                        onChange={(event) => setInOceania(event.currentTarget.checked)} />
+                    {(smallerThanLithuania || inOceania) && (
+                        <Anchor fz="lg" span fw={700} inherit c="blue" onClick={resetFilters}>
+                            Reset All
+                        </Anchor>
+                    )}
                 </Flex>
                 <Menu trigger="hover" openDelay={100} closeDelay={400} shadow="md" width={200}>
                     <Menu.Target>
@@ -71,19 +90,26 @@ export const CountryList = () => {
             </Flex>
             <div>
                 {countries.length > 0 &&
-                    countries.map((country) => {
-                        return (
-                            <div key={country.name.official}>
-                                <CountryPaper
-                                    flag={country.flags.png}
-                                    alt={country.flags.alt}
-                                    countryName={country.name.common}
-                                    region={country.region}
-                                    area={country.area}
-                                />
-                            </div>
-                        );
-                    })
+                    countries
+                        .filter((country) =>
+                            smallerThanLithuania ? country.area < countries.find((c) => c.name.common === "Lithuania").area : true
+                        )
+                        .filter((country) =>
+                            inOceania ? country.region === countries.find((c) => c.region === "Oceania").region : true
+                        )
+                        .map((country) => {
+                            return (
+                                <div key={country.name.official}>
+                                    <CountryPaper
+                                        flag={country.flags.png}
+                                        alt={country.flags.alt}
+                                        countryName={country.name.common}
+                                        region={country.region}
+                                        area={country.area}
+                                    />
+                                </div>
+                            );
+                        })
                 }
             </div>
         </>
