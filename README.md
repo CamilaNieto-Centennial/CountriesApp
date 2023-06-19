@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Countries App
+#### <a href="">Link of the Project</a>
+## Description
+This is a web application that displays a list of countries, by their name, region, and area size. Users can sort the list alphabetically by name and apply filters to check countries that are smaller than Lithuania by area or located in the "Oceania" region. Additionally, the app provides a Dark theme to Light theme button for a personalized viewing experience.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Preview
+![Countries App Preview](preview.png)
 
-## Available Scripts
+## Features
+- Fetches country data from the [restcountries.com](https://restcountries.com) API.
+- Displays a list of countries with their name, region, and area size.
+- Allows sorting the list alphabetically by name in ascending or descending order.
+- Provides filters to display countries smaller than Lithuania by area or in the "Oceania" region.
+- Supports pagination for easier navigation through the country list.
+- Offers a Dark theme to Light theme button.
 
-In the project directory, you can run:
+## Technologies Used
+- React.js: A modern JavaScript library for building user interfaces.
+- Axios: A promise-based HTTP client for making API requests.
+- JavaScript: A programming language that enhances code quality and development experience.
 
-### `npm start`
+## Installation
+1. Clone the repository:
+<code>git clone https://github.com/CamilaNieto-Centennial/CountriesApp.git</code>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+2. Navigate to the project directory:
+<code>cd countries-app</code>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+3. Install the dependencies:
+<code>npm install</code>
 
-### `npm test`
+4. Start the development server:
+<code>npm start</code>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+5. Open your browser and visit [http://localhost:3000](http://localhost:3000) to check the app.
 
-### `npm run build`
+## Usage
+- Click on the column headers to sort the country list alphabetically by name.
+- Check the "Smaller than Lithuania" checkbox to filter countries smaller than Lithuania by area.
+- Check the "Oceania" checkbox to filter countries in the "Oceania" region.
+- Use the pagination controls at the bottom of the page to navigate through the country list.
+- Click the Dark theme/Light theme button to switch between the dark and light themes.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
