@@ -15,6 +15,7 @@ export const CountryList = () => {
     const itemsPerPage = 10;
 
     useEffect(() => {
+        // Fetch countries data when the component mounts
         if (countries.length === 0) {
             bringCountries()
                 .then((response) => {
@@ -24,8 +25,8 @@ export const CountryList = () => {
         }
     }, [countries]);
 
+    // Sort the countries based on the sort order
     const sortCountries = (order) => {
-        console.log(order);
         const sorted = [...countries];
         sorted.sort((a, b) => {
             if (order === "ascending") {
@@ -39,11 +40,13 @@ export const CountryList = () => {
         setSortOrder(order);
     };
 
+    // Reset the filters
     const resetFilters = () => {
         setSmallerThanLithuania(false);
         setInOceania(false);
     }
 
+    // Filter the countries based on selected filters
     const filteredCountries = countries
         .filter((country) =>
             smallerThanLithuania
@@ -56,6 +59,7 @@ export const CountryList = () => {
                 : true
         );
 
+    // Pagination calculations
     const totalItems = filteredCountries.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
     const startIndex = (activePage - 1) * itemsPerPage;
@@ -74,6 +78,7 @@ export const CountryList = () => {
                 wrap="wrap"
                 mb="xs"
             >
+                {/* Filter options */}
                 <Flex gap="md" wrap="wrap">
                     <Text fz="lg" span fw={700} inherit>Filter By: </Text>
                     <Checkbox
@@ -92,6 +97,7 @@ export const CountryList = () => {
                         </Anchor>
                     )}
                 </Flex>
+                {/* Sort menu */}
                 <Menu trigger="hover" openDelay={100} closeDelay={400} shadow="md" width={200} position="bottom-end">
                     <Menu.Target>
                         <Button uppercase rightIcon={<IconChevronDown size="1.2rem" stroke={2} />} pr={12}>Sort By {(sortOrder === "ascending") ? " Ascending" : (sortOrder === "descending") ? " Descending" : ""}</Button>
@@ -109,6 +115,7 @@ export const CountryList = () => {
                 </Menu>
             </Flex>
             <div>
+                {/* Render the list of countries */}
                 {countriesToRender.map((country) => (
                     <div key={country.name.official}>
                         <CountryPaper
@@ -122,6 +129,7 @@ export const CountryList = () => {
                 ))}
             </div>
             <Center maw={385} h={60} mx="auto">
+                {/* Pagination */}
                 <Pagination value={activePage} onChange={setPage} total={totalPages} />
             </Center>
         </>

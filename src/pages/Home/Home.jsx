@@ -15,6 +15,7 @@ export const Home = () => {
         color: colorScheme === 'dark' ? '#F9FAFB' : undefined,
     };
 
+    // Define the custom theme
     const theme = {
         fontFamily: 'Open Sans, sans-serif',
         headings: { fontFamily: 'Greycliff CF, sans-serif' },
@@ -42,7 +43,6 @@ export const Home = () => {
                         align="center"
                         direction="row"
                         wrap="wrap"
-                    //mb="xs"
                     >
                         <Title order={1} mb={5}>Countries App</Title>
                         <ThemeSwitcher />
