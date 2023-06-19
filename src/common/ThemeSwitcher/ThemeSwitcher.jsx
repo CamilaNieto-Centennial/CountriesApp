@@ -38,7 +38,7 @@ export const ThemeSwitcher = () => {
     const largeScreen = useMediaQuery('(min-width: 26em)');
 
     return (
-        <Group position="center" mt={largeScreen ? 'xl' : 'sm'} mb={largeScreen ? 'xl' : 'lg'}>
+        <Group position="center" mt={largeScreen ? 'xl' : '0'} mb={largeScreen ? 'xl' : 'lg'}>
             <UnstyledButton
                 aria-label="Toggle theme"
                 className={classes.control}
