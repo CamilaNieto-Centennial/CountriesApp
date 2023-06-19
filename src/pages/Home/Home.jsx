@@ -44,7 +44,7 @@ export const Home = () => {
                         direction="row"
                         wrap="wrap"
                     >
-                        <Title order={1} mb={5}>Countries App</Title>
+                        <Title order={1}>Countries App</Title>
                         <ThemeSwitcher />
                     </Flex>
                     <CountryList />

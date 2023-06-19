@@ -37,7 +37,7 @@ export const ThemeSwitcher = () => {
     const Icon = colorScheme === 'dark' ? IconSun : IconMoon;
 
     return (
-        <Group position="center" my="xl">
+        <Group position="center" mb="lg">
             <UnstyledButton
                 aria-label="Toggle theme"
                 className={classes.control}
