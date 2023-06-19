@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStyles, UnstyledButton, Text, Center, useMantineColorScheme, Group, rem, } from '@mantine/core';
-import { upperFirst } from '@mantine/hooks';
+import { upperFirst, useMediaQuery  } from '@mantine/hooks';
 import { IconMoon, IconSun } from '@tabler/icons-react';
 
 import "./ThemeSwitcher.css";
@@ -35,9 +35,10 @@ export const ThemeSwitcher = () => {
     const { classes } = useStyles();
     const { colorScheme, toggleColorScheme } = useMantineColorScheme();
     const Icon = colorScheme === 'dark' ? IconSun : IconMoon;
+    const largeScreen = useMediaQuery('(min-width: 26em)');
 
     return (
-        <Group position="center" mb="lg">
+        <Group position="center" mt={largeScreen ? 'xl' : 'sm'} mb={largeScreen ? 'xl' : 'lg'}>
             <UnstyledButton
                 aria-label="Toggle theme"
                 className={classes.control}
