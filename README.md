@@ -1,5 +1,5 @@
 # Countries App
-#### <a href="">Link of the Project</a>
+#### <a href="https://countries-app-kmi.vercel.app/">Link of the Project</a>
 ## Description
 This is a web application that displays a list of countries, by their name, region, and area size. Users can sort the list alphabetically by name and apply filters to check countries that are smaller than Lithuania by area or located in the "Oceania" region. Additionally, the app provides a Dark theme to Light theme button for a personalized viewing experience.
 
