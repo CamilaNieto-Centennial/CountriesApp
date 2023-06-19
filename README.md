@@ -19,7 +19,7 @@ This is a web application that displays a list of countries, by their name, regi
 - Axios: A promise-based HTTP client for making API requests.
 - JavaScript: A programming language that enhances code quality and development experience.
 - Mantine UI: A React UI library providing ready-to-use components and themes.
-- Tabler Icons: A set of open-source icons for use in web and mobile interfaces.
+- Tabler Icons: A set of open-source icons for use in web and mobile interfaces. 
 
 ## Installation
 1. Clone the repository:
